@@ -1,0 +1,10 @@
+C:/Users/argon/GitHub/EE4OI6/CPPTest/CMakeFiles/CPPTest.dir
+C:/Users/argon/GitHub/EE4OI6/CPPTest/CMakeFiles/edit_cache.dir
+C:/Users/argon/GitHub/EE4OI6/CPPTest/CMakeFiles/rebuild_cache.dir
+C:/Users/argon/GitHub/EE4OI6/CPPTest/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+C:/Users/argon/GitHub/EE4OI6/CPPTest/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
+C:/Users/argon/GitHub/EE4OI6/CPPTest/CMakeFiles/CPPTest.dir
+C:/Users/argon/GitHub/EE4OI6/CPPTest/CMakeFiles/edit_cache.dir
+C:/Users/argon/GitHub/EE4OI6/CPPTest/CMakeFiles/rebuild_cache.dir
+C:/Users/argon/GitHub/EE4OI6/CPPTest/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+C:/Users/argon/GitHub/EE4OI6/CPPTest/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
