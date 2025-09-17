@@ -40,7 +40,6 @@ Additional fixtures:
 
 <img src="assets/fig05_enclosure.png" width="640" alt="Electronics enclosure">
 <img src="assets/fig06_tray.png" width="640" alt="Adjustable PCB tray">
-<img src="assets/fig07_tracks.png" width="640" alt="Tray tracks (side view)">
 
 **Electronics (motion, power, solder feed).**  
 Custom board: **Raspberry Pi Pico** + **TMC2209** drivers. 24 V rail with 5 V buck. **UART** exposes current, microstepping and diagnostics for smooth, consistent motion and gentle feed control.
