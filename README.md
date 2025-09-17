@@ -100,7 +100,7 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 
 <table>
   <tr>
-    <td align="center" width="30%">
+    <td align="center" width="80%">
       <img src="assets/fig11_curves.png" width="390" alt="Training curves"><br>
       <sub><b>Fig 11.</b> Loss/accuracy through training (early stopping around convergence).</sub>
     </td>
