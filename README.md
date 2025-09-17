@@ -29,11 +29,11 @@ Rigid V-slot frame; **12 mm Y-rods** for stiffness, **8 mm X-rods** to reduce mo
 <table>
   <tr>
     <td align="center" valign="top" width="50%">
-      <img src="assets/fig02_toolhead_cad.png" width="390" alt="Toolhead CAD"><br>
+      <img src="assets/fig02_toolhead_cad.png" width="380" alt="Toolhead CAD"><br>
       <sub><b>Toolhead CAD.</b> Iron + geared feed align wire right at the pad; compact, low-mass carriage.</sub>
     </td>
     <td align="center" valign="top" width="50%">
-      <img src="assets/fig03_corexy_cad.png" width="360" alt="CoreXY CAD"><br>
+      <img src="assets/fig03_corexy_cad.png" width="380" alt="CoreXY CAD"><br>
       <sub><b>CoreXY CAD.</b> Belt routing with idlers for symmetric tension; X-rail rides on 8 mm rods.</sub>
     </td>
   </tr>
@@ -43,7 +43,7 @@ Rigid V-slot frame; **12 mm Y-rods** for stiffness, **8 mm X-rods** to reduce mo
 <table>
   <tr>
     <td align="center" valign="top" width="50%">
-      <img src="assets/fig05_enclosure.png" width="390" alt="Electronics enclosure"><br>
+      <img src="assets/fig05_enclosure.png" width="360" alt="Electronics enclosure"><br>
       <sub><b>Electronics enclosure.</b> Houses PSU, control PCB, and thermal/EMI shielding for stable operation.</sub>
     </td>
     <td align="center" valign="top" width="50%">
@@ -52,6 +52,7 @@ Rigid V-slot frame; **12 mm Y-rods** for stiffness, **8 mm X-rods** to reduce mo
     </td>
   </tr>
 </table>
+
 
 ### Electronics (motion, power, solder feed)
 Custom controller: **Raspberry Pi Pico + TMC2209** drivers on a single board; **24 V** motion rail with **5 V** buck for logic. UART access to driver current, microstepping, and diagnostics enables safe current limits and smooth feeds.
@@ -79,15 +80,16 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="assets/fig09_preprocess.png" width="340" alt="Pre-processing steps"><br>
+      <img src="assets/fig09_preprocess.png" width="360" alt="Pre-processing steps"><br>
       <sub><b>Fig 09.</b> Pre-processing pipeline stabilizes appearance across glare/finish.</sub>
     </td>
     <td align="center" width="50%">
-      <img src="assets/fig10_inference.png" width="340" alt="Detection and classification overlay"><br>
-      <sub><b>Fig 10.</b> Detection + classification overlays with per-joint labels/confidences.</sub>
+      <img src="assets/fig10_inference.png" width="360" alt="Detection + classification overlay"><br>
+      <sub><b>Fig 10.</b> Detection + classification overlays with per-joint labels and confidences.</sub>
     </td>
   </tr>
 </table>
+
 
 ### Labeling & dataset
 - **Manual labeling** in LabelImg with rectangular boxes around each solder joint; class set: **Good**, **Bad** (e.g., bridges/voids/insufficient wetting), **Missing** (pad present, solder absent).  
@@ -101,20 +103,26 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="assets/fig11_curves.png" width="390" alt="Training curves"><br>
-      <sub><b>Fig 11.</b> Loss/accuracy through training (early stopping around convergence).</sub>
+      <img src="assets/fig11_curves.png" width="420" alt="Training curves"><br>
+      <sub><b>Fig 11.</b> Loss/accuracy vs. epochs (early stopping around convergence).</sub>
     </td>
     <td align="center" width="50%">
-      <img src="assets/fig12_confusion.png" width="390" alt="Confusion matrix"><br>
-      <sub><b>Fig 12.</b> Confusion matrix after validation; clear separation for <i>Missing</i> vs <i>Bad</i>.</sub>
+      <img src="assets/fig12_confusion.png" width="420" alt="Confusion matrix"><br>
+      <sub><b>Fig 12.</b> Confusion matrix; clear separation for <i>Missing</i> vs <i>Bad</i>.</sub>
     </td>
   </tr>
 </table>
 
+
 ### Operator app
 Tkinter GUI accepts **camera / image / video** inputs, renders detections with class/confidence, shows FPS, and writes **CSV logs**. Interface is structured to publish UART messages to the Pico for **closed-loop re-solder** in the next revision.
 
-<p align="center"><img src="assets/fig13_multi_boards.png" width="640" alt="Multiple boards assessed"></p>
+<p align="center">
+  <img src="assets/fig13_multi_boards.png" width="680" alt="Batch assessment across multiple boards">
+  <br>
+  <sub><b>Fig 13.</b> Batch assessment: per-joint labels and confidences across multiple boards; results logged to CSV for QA review and future closed-loop re-solder.</sub>
+</p>
+
 
 ---
 
