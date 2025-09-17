@@ -41,7 +41,7 @@ Rigid V-slot frame; **12 mm Y-rods** (stiffness), **8 mm X-rods** (low moving ma
 **Electronics (motion, power, solder feed).**  
 Custom board: **Raspberry Pi Pico** + **TMC2209** drivers. 24 V rail with 5 V buck. **UART** exposes current, microstepping and diagnostics for smooth, consistent motion and gentle feed control.
 
-<p align="center"><img src="assets/fig08_electronics_pcb.png" width="640" alt="Motion / regulation / feed PCB"></p>
+<p align="center"><img src="assets/fig08_electronics_pcb.png" width="340" alt="Motion / regulation / feed PCB"></p>
 
 **Firmware (C++ / PlatformIO).**  
 CoreXY kinematics, limit handling, and a **dynamic-derivative** control strategy for smooth starts/stops. We migrated from “variable step” to **variable motor speed** for stability. UART utilities enable driver telemetry and (next rev) closed-loop re-solder from the Pi.
@@ -61,9 +61,9 @@ https://github.com/user-attachments/assets/a4e11ffc-5575-4b82-93a4-2864e2e326f1
 TensorFlow Lite **MobileNetV2** (α = 0.75) outputs **Good / Bad / Missing**. Splitting **Missing** from **Bad** clarifies actions: **add solder** (Missing) vs **wick/reflow** (Bad/bridged). The compact model keeps latency low on Pi.
 
 <p align="center">
-  <img src="assets/fig10_inference.png" width="640" alt="Detection + classification"><br>
-  <img src="assets/fig11_curves.png" width="520" alt="Training curves"><br>
-  <img src="assets/fig12_confusion.png" width="520" alt="Confusion matrix">
+  <img src="assets/fig10_inference.png" width="340" alt="Detection + classification"><br>
+  <img src="assets/fig11_curves.png" width="320" alt="Training curves"><br>
+  <img src="assets/fig12_confusion.png" width="320" alt="Confusion matrix">
 </p>
 
 **Operator dashboard.**  
@@ -74,7 +74,7 @@ https://github.com/user-attachments/assets/8a706253-764e-4d3b-9e51-ec0bf89ef5b5
 **Performance.**  
 ~**30 ms/joint** on Pi 4 with the pre-processing + TFLite pipeline enables practical operator-in-the-loop QA.
 
-<p align="center"><img src="assets/fig13_multi_boards.png" width="640" alt="Multiple boards assessed"></p>
+<p align="center"><img src="assets/fig13_multi_boards.png" width="340" alt="Multiple boards assessed"></p>
 
 ---
 
