@@ -104,7 +104,7 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
   <tr>
     <td align="center" width="50%">
       <img src="assets/fig11_curves.png" width="420" alt="Training curves"><br>
-      <sub><b>Fig 11.</b> Loss/accuracy vs. epochs (early stopping around convergence).</sub>
+      <sub><b>Fig 11.</b> Loss/accuracy vs. epochs.</sub>
     </td>
     <td align="center" width="50%">
       <img src="assets/fig12_confusion.png" width="420" alt="Confusion matrix"><br>
