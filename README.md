@@ -4,12 +4,9 @@
 
 A CoreXY robot that **solders through-hole joints** end-to-end and performs **QA/QC** with a Raspberry Pi vision stack and a **MobileNetV2** classifier (Good / Bad / Missing). Built as a capstone project; **awarded 1st place**.
 
-<!-- Soldering video:
- below -->
-[https://github.com/user-attachments/assets/PASTE_SOLDERING_ACTION_LINK_HERE](https://github.com/user-attachments/assets/bd578e38-0186-475d-8fff-1729250c2fc7)
-
----
-
+<!-- Soldering action near the top -->
+<video src="assets/videos/soldering_action_960.mp4"
+       width="700" autoplay loop muted playsinline></video>
 ## ✨ Highlights
 
 - **Electromechanical soldering:** CoreXY XY + Z toolhead + motorized solder feed for precise wire advance.
