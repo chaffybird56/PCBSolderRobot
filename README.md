@@ -17,7 +17,11 @@ https://github.com/user-attachments/assets/3e60dc63-2b64-4922-9cd8-233fcee57446
 - **App:** Tkinter GUI with live video/image inputs, overlays, per-joint confidences, and CSV logging for on-the-fly assessment and future **auto re-solder**.
 
 <!-- High-level modules overview for fast context -->
-<p align="center"><img src="assets/fig01_modules.png" width="680" alt="System modules overview"></p>
+<p align="center">
+  <img src="assets/fig01_modules.png" width="700" alt="System modules overview"><br>
+  <sub><b>Fig 01.</b> System modules: mechanics, electronics, firmware, vision, ML, and operator app.</sub>
+</p>
+
 
 ---
 
@@ -29,29 +33,31 @@ Rigid V-slot frame; **12 mm Y-rods** for stiffness, **8 mm X-rods** to reduce mo
 <table>
   <tr>
     <td align="center" valign="top" width="50%">
-      <img src="assets/fig02_toolhead_cad.png" width="380" alt="Toolhead CAD"><br>
-      <sub><b>Toolhead CAD.</b> Iron + geared feed align wire right at the pad; compact, low-mass carriage.</sub>
+      <img src="assets/fig02_toolhead_cad.png" width="420" alt="Toolhead CAD"><br>
+      <sub><b>Fig 02 — Toolhead CAD.</b> Iron + geared feeder align wire at the pad; compact, low-mass carriage.</sub>
     </td>
     <td align="center" valign="top" width="50%">
-      <img src="assets/fig03_corexy_cad.png" width="380" alt="CoreXY CAD"><br>
-      <sub><b>CoreXY CAD.</b> Belt routing with idlers for symmetric tension; X-rail rides on 8 mm rods.</sub>
+      <img src="assets/fig03_corexy_cad.png" width="420" alt="CoreXY CAD"><br>
+      <sub><b>Fig 03 — CoreXY CAD.</b> Symmetric belt routing with idlers; X-rail on 8 mm rods.</sub>
     </td>
   </tr>
 </table>
+
 
 ### Additional fixtures
 <table>
   <tr>
     <td align="center" valign="top" width="50%">
-      <img src="assets/fig05_enclosure.png" width="360" alt="Electronics enclosure"><br>
-      <sub><b>Electronics enclosure.</b> Houses PSU, control PCB, and thermal/EMI shielding for stable operation.</sub>
+      <img src="assets/fig05_enclosure.png" width="420" alt="Electronics enclosure"><br>
+      <sub><b>Fig 05 — Electronics enclosure.</b> PSU + control PCB; thermal/EMI shielding for stable operation.</sub>
     </td>
     <td align="center" valign="top" width="50%">
-      <img src="assets/fig06_tray.png" width="360" alt="Adjustable PCB tray"><br>
-      <sub><b>Adjustable PCB tray.</b> Locates boards against hard stops; repeatable datum for imaging and soldering.</sub>
+      <img src="assets/fig06_tray.png" width="420" alt="Adjustable PCB tray"><br>
+      <sub><b>Fig 06 — Adjustable PCB tray.</b> Hard-stop datums for repeatable imaging and soldering.</sub>
     </td>
   </tr>
 </table>
+
 
 
 ### Electronics (motion, power, solder feed)
@@ -81,14 +87,15 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
   <tr>
     <td align="center" width="50%">
       <img src="assets/fig09_preprocess.png" width="360" alt="Pre-processing steps"><br>
-      <sub><b>Fig 09.</b> Pre-processing pipeline stabilizes appearance across glare/finish.</sub>
+      <sub><b>Fig 09.</b> Equalize → HSV → Otsu(H) → V-gating → median → morph → 224×224 crops.</sub>
     </td>
     <td align="center" width="50%">
       <img src="assets/fig10_inference.png" width="360" alt="Detection + classification overlay"><br>
-      <sub><b>Fig 10.</b> Detection + classification overlays with per-joint labels and confidences.</sub>
+      <sub><b>Fig 10.</b> Overlay of joint boxes with <i>Good/Bad/Missing</i> labels and confidences.</sub>
     </td>
   </tr>
 </table>
+
 
 
 ### Labeling & dataset
@@ -103,25 +110,26 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="assets/fig11_curves.png" width="420" alt="Training curves"><br>
-      <sub><b>Fig 11.</b> Loss/accuracy vs. epochs (early stopping around convergence).</sub>
+      <img src="assets/fig11_curves.png" width="520" alt="Training curves"><br>
+      <sub><b>Fig 11.</b> Loss/accuracy vs. epochs; early stopping at convergence.</sub>
     </td>
     <td align="center" width="50%">
-      <img src="assets/fig12_confusion.png" width="420" alt="Confusion matrix"><br>
-      <sub><b>Fig 12.</b> Confusion matrix; clear separation for <i>Missing</i> vs <i>Bad</i>.</sub>
+      <img src="assets/fig12_confusion.png" width="520" alt="Confusion matrix"><br>
+      <sub><b>Fig 12.</b> Confusion matrix showing clear separation for <i>Missing</i> vs <i>Bad</i>.</sub>
     </td>
   </tr>
 </table>
+
 
 
 ### Operator app
 Tkinter GUI accepts **camera / image / video** inputs, renders detections with class/confidence, shows FPS, and writes **CSV logs**. Interface is structured to publish UART messages to the Pico for **closed-loop re-solder** in the next revision.
 
 <p align="center">
-  <img src="assets/fig13_multi_boards.png" width="680" alt="Batch assessment across multiple boards">
-  <br>
-  <sub><b>Fig 13.</b> Batch assessment: per-joint labels and confidences across multiple boards; results logged to CSV for QA review and future closed-loop re-solder.</sub>
+  <img src="assets/fig13_multi_boards.png" width="700" alt="Batch assessment across multiple boards"><br>
+  <sub><b>Fig 13.</b> Batch assessment: per-joint labels & confidences across multiple boards; all decisions logged to CSV for QA and future closed-loop re-solder.</sub>
 </p>
+
 
 
 ---
@@ -131,7 +139,7 @@ Tkinter GUI accepts **camera / image / video** inputs, renders detections with c
 - Robust segmentation + accurate **3-class** decisions; clear overlays & logs
 - Full motion + solder-feed PoC with UART telemetry for safety and tuning
 
-## ⏳ Next
+## ⏳ Future Possible Upgrades
 - Unify capture + inference on Picamera2 end-to-end  
 - Close the loop: UART-triggered re-solder routines  
 - Accelerate on Jetson/Coral; expand dataset with more boards/edge-cases
