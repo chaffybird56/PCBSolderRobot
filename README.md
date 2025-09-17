@@ -1,15 +1,16 @@
 # Autonomous PCB Soldering Robot
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Robot.png" width="28" height="28" /> Overview
+## 🤖 Overview
 
 A CoreXY robot that **solders through-hole joints** end-to-end and performs **QA/QC** with a Raspberry Pi vision stack and a **MobileNetV2** classifier (Good / Bad / Missing). Built as a capstone project; **awarded 1st place**.
 
-<!-- Near the top: show the soldering action (no top banner) -->
-<video src="assets/videos/soldering_action_960.mp4" width="700" controls playsinline></video>
+<!-- Soldering video:
+ below -->
+[https://github.com/user-attachments/assets/PASTE_SOLDERING_ACTION_LINK_HERE](https://github.com/user-attachments/assets/bd578e38-0186-475d-8fff-1729250c2fc7)
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Sparkles.png" width="24" height="24" /> Highlights
+## ✨ Highlights
 
 - **Electromechanical soldering:** CoreXY XY + Z toolhead + motorized solder feed for precise wire advance.
 - **Vision + ML QA/QC:** Pi 4 + Pi HQ Camera + 100× microscope lens; MobileNetV2 (TFLite) classifies each joint in ~30 ms.
@@ -17,7 +18,7 @@ A CoreXY robot that **solders through-hole joints** end-to-end and performs **QA
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Factory.png" width="24" height="24" /> System Architecture
+## 🏭 System Architecture
 
 **Mechanical (CoreXY + Z + feed).**  
 Rigid V-slot frame; **12 mm Y-rods** (stiffness), **8 mm X-rods** (low moving mass), GT2 belts. The toolhead integrates a temperature-controlled iron + geared solder-wire feed. An adjustable tray fixtures different PCB sizes consistently.
@@ -49,8 +50,9 @@ Custom board: **Raspberry Pi Pico** + **TMC2209** drivers. 24 V rail with 5 V bu
 **Firmware (C++ / PlatformIO).**  
 CoreXY kinematics, limit handling, and a **dynamic-derivative** control strategy for smooth starts/stops. We migrated from “variable step” to **variable motor speed** for stability. UART utilities enable driver telemetry and (next rev) closed-loop re-solder from the Pi.
 
-<!-- Axis motion video belongs in System Architecture -->
-<video src="assets/videos/axis_motion_960.mp4" width="700" controls playsinline></video>
+<!-- Axis motion video: paste user-attachments link on its own line -->
+
+[https://github.com/user-attachments/assets/PASTE_AXIS_MOTION_LINK_HERE](https://github.com/user-attachments/assets/3f7d479c-3082-4bf5-9540-0c8854ed8052)
 
 **Vision hardware (Pi coprocessor).**  
 **Pi 4 + Pi HQ Camera + 100× lens** at a fixed working distance; **LED ring** fill lighting to reduce glare and stabilize exposure. Data-collection used a legacy camera stack; the final inference GUI runs on newer Pi OS (Picamera2).
@@ -59,7 +61,7 @@ CoreXY kinematics, limit handling, and a **dynamic-derivative** control strategy
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Microscope.png" width="24" height="24" /> Vision & ML
+## 🔬 Vision & ML
 
 **Acquisition & pre-processing.**  
 8 MP frames → histogram equalization → **BGR→HSV** → **Otsu** on Hue (to isolate solder) + **V-channel gating** (suppress dim pixels) → median filter → segmentation → **224×224** crops per joint. Robust to lighting and finish variances.
@@ -76,8 +78,8 @@ TensorFlow Lite **MobileNetV2** (α = 0.75) outputs **Good / Bad / Missing**. Sp
 **Operator dashboard.**  
 **Tkinter** GUI renders live boxes, per-joint class/confidence, FPS, and logs every decision to CSV. Inputs: **camera / image / video**. Designed to publish UART messages to the Pico for **auto re-solder**.
 
-<!-- Vision setup demo belongs here -->
-<video src="assets/videos/vision_setup_960.mp4" width="700" controls playsinline></video>
+<!-- Vision setup video: paste user-attachments link on its own line -->
+[https://github.com/user-attachments/assets/PASTE_VISION_SETUP_LINK_HERE](https://github.com/user-attachments/assets/72fe943d-a2a2-4d11-bae9-378e5c8d6472)
 
 **Performance.**  
 ~**30 ms/joint** on Pi 4 with the pre-processing + TFLite pipeline enables practical operator-in-the-loop QA.
@@ -86,19 +88,19 @@ TensorFlow Lite **MobileNetV2** (α = 0.75) outputs **Good / Bad / Missing**. Sp
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Check%20Mark%20Button.png" width="22" height="22" /> Results
+## ✅ Results
 - Repeatable imaging at ~10″ working distance; uniform LED fill reduces glare.  
 - Consistent segmentation with accurate 3-class decisions and clear overlays/logs.  
 - Full motion + solder-feed proof-of-concept with UART telemetry for safety and tuning.
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Time/Hourglass%20Done.png" width="22" height="22" /> Next
+## ⏳ Next
 - **Unify** capture + inference (Picamera2 end-to-end).  
 - **Close the loop:** UART-triggered re-solder routines.  
 - **Accelerate** on Jetson/Coral; **expand** dataset with more boards/edge-cases.
 
 ---
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Handshake.png" width="24" height="24" /> Team
+## 🤝 Team
 Arji Thaiyib, Arjun Bhatia, **Ahmad Choudhry**, Abdullah Hafeez, Mayar Aljayoush  
 Supervisors: Dr. S. Shirani, Dr. C. Chen
 
