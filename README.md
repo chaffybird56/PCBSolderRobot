@@ -1,109 +1,117 @@
 # Autonomous PCB Soldering Robot
 
-> A CoreXY robot that **soldiers through-hole joints** end-to-end and performs **QA/QC** with a Raspberry Pi vision stack and a **MobileNetV2** classifier (Good / Bad / Missing). Built as a capstone project; awarded 1st place.
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Robot.png" width="28" height="28" /> Overview
 
-<p align="center">
-  <img src="assets/gifs/soldering_action.gif" width="85%" alt="Soldering in action"/>
-</p>
+A CoreXY robot that **soldiers through-hole joints** end-to-end and performs **QA/QC** with a Raspberry Pi vision stack and a **MobileNetV2** classifier (Good / Bad / Missing). Built as a capstone project; **awarded 1st place**.
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/gifs/soldering_action.gif" width="430" alt="Soldering in action"><br>
+      <em>Soldering a joint</em>
+    </td>
+    <td align="center">
+      <img src="assets/gifs/axis_motion.gif" width="430" alt="CNC axis motion demo"><br>
+      <em>CoreXY/Z motion & steppers</em>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## TL;DR
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Sparkles.png" width="24" height="24" /> Highlights
 
-- **Electromechanical soldering**: CoreXY XY gantry + Z toolhead + motorized solder-wire feed for precise through-hole joints.
-- **Vision + ML QA/QC**: Pi 4 + Pi HQ Camera + 100× microscope lens; MobileNetV2 (TFLite) classifies each joint in **~30 ms**.
-- **Operator dashboard**: Tkinter GUI overlays labels & confidences, logs to CSV; structured to close the loop to firmware for **auto re-solder** in the next revision.
-
-**Why it matters (quick context):** low-volume teams (labs, aerospace/medical proto lines, startups) still spend real time on **manual TH solder + inspection**. This system integrates **mechanics, motion control, vision, and ML** so one platform can (1) place consistent joints and (2) flag **Bad**/**Missing** cases immediately, speeding touch-ups and improving repeatability without a large SMT line.
+- **Electromechanical soldering:** CoreXY XY + Z toolhead + motorized solder feed for precise wire advance.
+- **Vision + ML QA/QC:** Pi 4 + Pi HQ Camera + 100× microscope lens; MobileNetV2 (TFLite) classifies each joint in ~30 ms.
+- **Operator dashboard:** Tkinter GUI overlays labels/confidences, logs CSVs; designed to close the loop to firmware for **auto re-solder**.
 
 ---
 
-## System architecture
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Factory.png" width="24" height="24" /> System Architecture
 
 **Mechanical (CoreXY + Z + feed).**  
-A rigid V-slot frame with 12 mm Y-rods (stiffness), 8 mm X-rods (low moving mass), and GT2 belts. The toolhead combines a temperature-controlled iron and a geared solder-feed so wire advances precisely into the joint. A rail-adjustable tray fixtures PCBs of varying sizes.
+Rigid V-slot frame; **12 mm Y-rods** (stiffness), **8 mm X-rods** (low moving mass), GT2 belts. Toolhead integrates temperature-controlled iron + geared solder-wire feed. An adjustable tray fixtures different PCB sizes.
 
-<p align="center">
-  <img src="assets/fig02_toolhead_cad.png" width="49%" alt="Toolhead CAD"/>
-  <img src="assets/fig03_corexy_cad.png" width="49%" alt="CoreXY CAD"/>
-</p>
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/fig02_toolhead_cad.png" width="430" alt="Toolhead CAD"><br><em>Toolhead CAD</em>
+    </td>
+    <td align="center">
+      <img src="assets/fig03_corexy_cad.png" width="430" alt="CoreXY CAD"><br><em>CoreXY CAD</em>
+    </td>
+  </tr>
+</table>
 
-**Demo (axis motion detail).**  
-A short motion clip illustrating kinematics and stepper behavior (captured pre-final assembly):
-<p align="center">
-  <img src="assets/gifs/axis_motion.gif" width="70%" alt="CNC axis motion demo"/>
-</p>
+Additional fixtures:
+- **Electronics enclosure** with PSU, regulation and control PCBs  
+- **Adjustable PCB tray + tracks** for repeatable placement
+
+<img src="assets/fig05_enclosure.png" width="640" alt="Electronics enclosure">
+<img src="assets/fig06_tray.png" width="640" alt="Adjustable PCB tray">
+<img src="assets/fig07_tracks.png" width="640" alt="Tray tracks (side view)">
 
 **Electronics (motion, power, solder feed).**  
-Custom control board with **Raspberry Pi Pico** + **TMC2209** drivers. 24 V rail (with 5 V buck) powers XY/Z and the solder-feed. **UART** exposes driver current, microstepping, and diagnostics for consistent motion and gentle, repeatable feed.
+Custom board: **Raspberry Pi Pico** + **TMC2209** drivers. 24 V rail with 5 V buck. **UART** exposes current, microstepping and diagnostics for smooth, consistent motion and gentle feed control.
 
-![Electronics enclosure](assets/fig05_enclosure.png)
-![Motion / regulation / solder-feed PCB](assets/fig08_electronics_pcb.png)
+<img src="assets/fig08_electronics_pcb.png" width="800" alt="Motion / regulation / feed PCB">
 
 **Firmware (C++ / PlatformIO).**  
-CoreXY kinematics, limit handling, and a **dynamic-derivative control** scheme for smooth starts/stops. We migrated from “variable step” to **variable motor speed** for stability and cleaner trajectories. UART utilities enable (a) driver telemetry and (b) future **auto re-solder** triggers from the Pi.
+CoreXY kinematics, limits, and a **dynamic-derivative** control strategy for smooth starts/stops. We migrated from “variable step” to **variable motor speed** for stability. UART utilities enable driver telemetry and (next rev) closed-loop re-solder from the Pi.
 
 **Vision hardware (Pi coprocessor).**  
-**Pi 4 + Pi HQ Camera + 100× microscope lens**, fixed working distance, and **LED ring fill lighting** for uniform, glare-reduced captures. Data collection used a legacy stack for camera drivers; the final inference GUI runs on newer Pi OS with Picamera2.
+**Pi 4 + Pi HQ Camera + 100× lens** at a fixed working distance; **LED ring** fill lighting to reduce glare and stabilize exposure. Data-collection used a legacy camera stack; the final inference GUI runs on newer Pi OS (Picamera2).
 
-![Module overview](assets/fig01_modules.png)
+<img src="assets/fig01_modules.png" width="800" alt="Module overview">
 
 ---
 
-## Vision & ML
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Microscope.png" width="24" height="24" /> Vision & ML
 
 **Acquisition & pre-processing.**  
-8 MP frames → histogram equalization → **BGR→HSV** → **Otsu** on Hue to isolate solder + **V-channel gating** to suppress dim pixels → median filter → segmentation → **224×224** crops per joint. These steps stabilize input across lighting and finish variations.
+8 MP frames → histogram equalization → **BGR→HSV** → **Otsu** on Hue (to isolate solder) + **V-channel gating** (suppress dim pixels) → median filter → segmentation → **224×224** crops per joint. Robust to lighting and finish variances.
 
-![Pre-processing steps](assets/fig09_preprocess.png)
+<img src="assets/fig09_preprocess.png" width="800" alt="Pre-processing steps">
 
 **Classifier (3-class MobileNetV2).**  
-TensorFlow-Lite **MobileNetV2** (α = 0.75) classifies each crop as **Good / Bad / Missing**. Explicitly separating **Missing** makes operator actions obvious: add solder (Missing) vs. wick/reflow (Bad/bridged). The compact model keeps latency low on a Pi while maintaining practical accuracy.
+TensorFlow Lite **MobileNetV2** (α = 0.75) outputs **Good / Bad / Missing**. Splitting Missing from Bad clarifies actions: **add solder** (Missing) vs **wick/reflow** (Bad/bridged). Compact model keeps latency low on Pi.
 
-![Detection + classification](assets/fig10_inference.png)
-![Training curves](assets/fig11_curves.png)
-![Confusion matrix](assets/fig12_confusion.png)
+<img src="assets/fig10_inference.png" width="800" alt="Detection + classification">
+<img src="assets/fig11_curves.png" width="640" alt="Training curves">
+<img src="assets/fig12_confusion.png" width="640" alt="Confusion matrix">
 
 **Dataset & augmentation.**  
-Images from IEEE trainee boards + in-house captures under the LED rig; bounding boxes labeled in LabelImg. Augmentations—rotations, flips, Gaussian noise, spatter/dropout (≈7× expansion)—improve generalization across joint angle, pad geometry, reflectivity, and minor lighting drift.
+IEEE trainee PCBs + in-house captures under the LED rig; LabelImg annotations. Rotations, flips, Gaussian noise, and spatter/dropout (~7× expansion) to generalize across angles, pad geometry, reflectivity and minor lighting shifts.
 
 **Operator dashboard.**  
-A **Tkinter** GUI renders live boxes, per-joint class/confidence, FPS, and logs to CSV. Inputs include **camera / image / video**. The UI design anticipates UART messages back to the Pico for **closed-loop re-solder** (future).
+**Tkinter** GUI renders live boxes, per-joint class/confidence, FPS, and logs every decision to CSV. Inputs: **camera / image / video**. Designed to publish UART messages to the Pico for **auto re-solder**.
 
 <p align="center">
-  <img src="assets/gifs/vision_setup.gif" width="80%" alt="Vision setup: camera, lens, lighting, GUI"/>
+  <img src="assets/gifs/vision_setup.gif" width="700" alt="Vision setup: camera, lens, lighting, GUI">
 </p>
 
 **Performance.**  
-With the pre-processing pipeline and the TFLite model, **~30 ms/joint** inference on Pi 4 enables efficient operator-in-the-loop QA on multi-board batches.
+~**30 ms/joint** on Pi 4 with the pre-processing + TFLite pipeline enables practical operator-in-the-loop QA.
 
-![Multiple boards assessed](assets/fig13_multi_boards.png)
-
----
-
-## Results (v1)
-
-- Repeatable imaging at a ~10″ working distance with uniform LED fill lighting.  
-- Consistent segmentation and accurate 3-class decisions with clear overlays/logs.  
-- Full motion + solder-feed proof-of-concept; UART telemetry for safety/tuning and future autonomy.
+<img src="assets/fig13_multi_boards.png" width="800" alt="Multiple boards assessed">
 
 ---
 
-## Limitations & next steps
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Check%20Mark%20Button.png" width="22" height="22" /> Results
+- Repeatable imaging at ~10″ working distance; uniform LED fill reduces glare.  
+- Consistent segmentation with accurate 3-class decisions and clear overlays/logs.  
+- Full motion + solder-feed proof-of-concept with UART telemetry for safety and tuning.
 
-- **Unify** capture + inference on one OS stack (Picamera2 end-to-end).  
-- **Close the loop**: issue UART commands for automatic re-solder on **Bad/Missing** detections.  
-- **Accelerate** inference (Jetson/Coral) and **expand** the dataset with more boards & edge cases.
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Time/Hourglass%20Done.png" width="22" height="22" /> Next
+- **Unify** capture + inference (Picamera2 end-to-end).  
+- **Close the loop:** UART-triggered re-solder routines.  
+- **Accelerate** on Jetson/Coral; **expand** dataset with more boards/edge-cases.
 
 ---
 
-## Team & acknowledgments
-
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Handshake.png" width="24" height="24" /> Team
 Arji Thaiyib, Arjun Bhatia, **Ahmad Choudhry**, Abdullah Hafeez, Mayar Aljayoush  
 Supervisors: Dr. S. Shirani, Dr. C. Chen
 
----
-
 ## License
-
-This project is released under the **MIT License**. See [LICENSE](LICENSE) for details.
+Released under the **MIT License** — see [LICENSE](LICENSE).
