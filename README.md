@@ -24,10 +24,10 @@ Rigid V-slot frame; **12 mm Y-rods** (stiffness), **8 mm X-rods** (low moving ma
 <table>
   <tr>
     <td align="center">
-      <img src="assets/fig02_toolhead_cad.png" width="360" alt="Toolhead CAD"><br><em>Toolhead CAD</em>
+      <img src="assets/fig02_toolhead_cad.png" width="440" alt="Toolhead CAD"><br><em>Toolhead CAD</em>
     </td>
     <td align="center">
-      <img src="assets/fig03_corexy_cad.png" width="360" alt="CoreXY CAD"><br><em>CoreXY CAD</em>
+      <img src="assets/fig03_corexy_cad.png" width="380" alt="CoreXY CAD"><br><em>CoreXY CAD</em>
     </td>
   </tr>
 </table>
