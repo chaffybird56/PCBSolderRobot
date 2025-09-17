@@ -12,7 +12,7 @@ https://github.com/user-attachments/assets/3e60dc63-2b64-4922-9cd8-233fcee57446
 - **Vision + ML QA/QC:** Pi 4 + Pi HQ Camera + 100× microscope lens; MobileNetV2 (TFLite) classifies each joint in ~30 ms.
 - **Operator dashboard:** Tkinter GUI overlays labels/confidences, logs CSVs; designed to close the loop to firmware for **auto re-solder**.
 
-<p align="center"><img src="assets/fig01_modules.png" width="680" alt="Module overview"></p>
+<p align="center"><img src="assets/fig01_modules.png" width="480" alt="Module overview"></p>
 
 ---
 
@@ -34,8 +34,8 @@ Rigid V-slot frame; **12 mm Y-rods** (stiffness), **8 mm X-rods** (low moving ma
 
 **Additional fixtures**  
 <p align="center">
-  <img src="assets/fig05_enclosure.png" width="560" alt="Electronics enclosure"><br>
-  <img src="assets/fig06_tray.png" width="560" alt="Adjustable PCB tray">
+  <img src="assets/fig05_enclosure.png" width="360" alt="Electronics enclosure"><br>
+  <img src="assets/fig06_tray.png" width="360" alt="Adjustable PCB tray">
 </p>
 
 **Electronics (motion, power, solder feed).**  
