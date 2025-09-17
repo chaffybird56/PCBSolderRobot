@@ -37,7 +37,7 @@ Rigid V-slot frame; **12 mm Y-rods** for stiffness, **8 mm X-rods** to reduce mo
 </p>
 
 <p align="center">
-  <img src="assets/fig03_corexy_cad.png" width="600" alt="CoreXY CAD"><br>
+  <img src="assets/fig03_corexy_cad.png" width="500" alt="CoreXY CAD"><br>
   <sub><b>Fig 03 — CoreXY CAD.</b> Symmetric belt routing with idlers; X-rail on 8 mm rods.</sub>
 </p>
 
@@ -110,12 +110,12 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 
 <!-- Training plots (stacked for readability) -->
 <p align="center">
-  <img src="assets/fig11_curves.png" width="800" alt="Training curves"><br>
+  <img src="assets/fig11_curves.png" width="550" alt="Training curves"><br>
   <sub><b>Fig 11.</b> Loss/accuracy vs. epochs; early stopping at convergence.</sub>
 </p>
 
 <p align="center">
-  <img src="assets/fig12_confusion.png" width="450" alt="Confusion matrix"><br>
+  <img src="assets/fig12_confusion.png" width="500" alt="Confusion matrix"><br>
   <sub><b>Fig 12.</b> Clear separation for <i>Missing</i> vs <i>Bad</i>.</sub>
 </p>
 
@@ -126,7 +126,7 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 Tkinter GUI accepts **camera / image / video** inputs, renders detections with class/confidence, shows FPS, and writes **CSV logs**. Interface is structured to publish UART messages to the Pico for **closed-loop re-solder** in the next revision.
 
 <p align="center">
-  <img src="assets/fig13_multi_boards.png" width="600" alt="Batch assessment across multiple boards"><br>
+  <img src="assets/fig13_multi_boards.png" width="500" alt="Batch assessment across multiple boards"><br>
   <sub><b>Fig 13.</b> Batch assessment: per-joint labels & confidences across multiple boards; all decisions logged to CSV for QA and future closed-loop re-solder.</sub>
 </p>
 
