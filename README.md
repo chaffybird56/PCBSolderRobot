@@ -30,18 +30,17 @@ https://github.com/user-attachments/assets/3e60dc63-2b64-4922-9cd8-233fcee57446
 ### Mechanical (CoreXY + Z + feeder)
 Rigid V-slot frame; **12 mm Y-rods** for stiffness, **8 mm X-rods** to reduce moving mass, **GT2 belts** on XY; Z by leadscrew. Toolhead integrates a temperature-controlled iron with a **geared solder-wire feeder**. A kitted tray fixtures boards repeatably.
 
-<table>
-  <tr>
-    <td align="center" valign="top" width="50%">
-      <img src="assets/fig02_toolhead_cad.png" width="420" alt="Toolhead CAD"><br>
-      <sub><b>Fig 02 — Toolhead CAD.</b> Iron + geared feeder align wire at the pad; compact, low-mass carriage.</sub>
-    </td>
-    <td align="center" valign="top" width="50%">
-      <img src="assets/fig03_corexy_cad.png" width="420" alt="CoreXY CAD"><br>
-      <sub><b>Fig 03 — CoreXY CAD.</b> Symmetric belt routing with idlers; X-rail on 8 mm rods.</sub>
-    </td>
-  </tr>
-</table>
+<!-- Mechanical CAD (stacked) -->
+<p align="center">
+  <img src="assets/fig02_toolhead_cad.png" width="900" alt="Toolhead CAD"><br>
+  <sub><b>Fig 02 — Toolhead CAD.</b> Iron + geared feeder align wire at the pad; compact, low-mass carriage.</sub>
+</p>
+
+<p align="center">
+  <img src="assets/fig03_corexy_cad.png" width="900" alt="CoreXY CAD"><br>
+  <sub><b>Fig 03 — CoreXY CAD.</b> Symmetric belt routing with idlers; X-rail on 8 mm rods.</sub>
+</p>
+
 
 
 ### Additional fixtures
@@ -83,18 +82,20 @@ https://github.com/user-attachments/assets/8a706253-764e-4d3b-9e51-ec0bf89ef5b5
 ### Acquisition & pre-processing
 Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram equalization → **BGR→HSV** → **Otsu** threshold on Hue to isolate solder → **V-channel gating** to drop dim pixels → median filter → morphological cleanup → per-joint crops at **224×224**.
 
-<table>
+<!-- Vision: pre-processing + inference (larger side-by-side) -->
+<table width="100%">
   <tr>
     <td align="center" width="50%">
-      <img src="assets/fig09_preprocess.png" width="360" alt="Pre-processing steps"><br>
+      <img src="assets/fig09_preprocess.png" width="100%" alt="Pre-processing steps"><br>
       <sub><b>Fig 09.</b> Equalize → HSV → Otsu(H) → V-gating → median → morph → 224×224 crops.</sub>
     </td>
     <td align="center" width="50%">
-      <img src="assets/fig10_inference.png" width="360" alt="Detection + classification overlay"><br>
+      <img src="assets/fig10_inference.png" width="100%" alt="Detection + classification overlay"><br>
       <sub><b>Fig 10.</b> Overlay of joint boxes with <i>Good/Bad/Missing</i> labels and confidences.</sub>
     </td>
   </tr>
 </table>
+
 
 
 
@@ -107,18 +108,17 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 - **MobileNetV2 (α = 0.75)** in TFLite for low-latency inference on Pi; trained on augmented crops.  
 - Loss: categorical cross-entropy with early stopping; metrics tracked per-class to ensure **Missing** stays separable from **Bad**.
 
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <img src="assets/fig11_curves.png" width="520" alt="Training curves"><br>
-      <sub><b>Fig 11.</b> Loss/accuracy vs. epochs; early stopping at convergence.</sub>
-    </td>
-    <td align="center" width="50%">
-      <img src="assets/fig12_confusion.png" width="520" alt="Confusion matrix"><br>
-      <sub><b>Fig 12.</b> Confusion matrix showing clear separation for <i>Missing</i> vs <i>Bad</i>.</sub>
-    </td>
-  </tr>
-</table>
+<!-- Training plots (stacked for readability) -->
+<p align="center">
+  <img src="assets/fig11_curves.png" width="1000" alt="Training curves"><br>
+  <sub><b>Fig 11.</b> Loss/accuracy vs. epochs; early stopping at convergence.</sub>
+</p>
+
+<p align="center">
+  <img src="assets/fig12_confusion.png" width="1000" alt="Confusion matrix"><br>
+  <sub><b>Fig 12.</b> Clear separation for <i>Missing</i> vs <i>Bad</i>.</sub>
+</p>
+
 
 
 
