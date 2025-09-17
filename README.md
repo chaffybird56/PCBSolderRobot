@@ -101,11 +101,11 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="assets/fig11_curves.png" width="360" alt="Training curves"><br>
+      <img src="assets/fig11_curves.png" width="390" alt="Training curves"><br>
       <sub><b>Fig 11.</b> Loss/accuracy through training (early stopping around convergence).</sub>
     </td>
     <td align="center" width="50%">
-      <img src="assets/fig12_confusion.png" width="360" alt="Confusion matrix"><br>
+      <img src="assets/fig12_confusion.png" width="390" alt="Confusion matrix"><br>
       <sub><b>Fig 12.</b> Confusion matrix after validation; clear separation for <i>Missing</i> vs <i>Bad</i>.</sub>
     </td>
   </tr>
