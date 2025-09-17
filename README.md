@@ -1,7 +1,7 @@
 # Autonomous PCB Soldering Robot
 
 ## 🤖 Overview
-A CoreXY robot that **solders through-hole joints** end-to-end and performs **QA/QC** with a Raspberry Pi vision stack and a **MobileNetV2** classifier (Good / Bad / Missing). Built as a capstone project; **awarded 1st place**.
+A CNC precision 3‑axis automated PCB soldering system with vision processing and AI solder recognition for in-App QA/QC in assembly. Built as a capstone project; **awarded 1st place**.
 
 https://github.com/user-attachments/assets/3e60dc63-2b64-4922-9cd8-233fcee57446
 
