@@ -32,12 +32,12 @@ Rigid V-slot frame; **12 mm Y-rods** for stiffness, **8 mm X-rods** to reduce mo
 
 <!-- Mechanical CAD (stacked) -->
 <p align="center">
-  <img src="assets/fig02_toolhead_cad.png" width="900" alt="Toolhead CAD"><br>
+  <img src="assets/fig02_toolhead_cad.png" width="600" alt="Toolhead CAD"><br>
   <sub><b>Fig 02 — Toolhead CAD.</b> Iron + geared feeder align wire at the pad; compact, low-mass carriage.</sub>
 </p>
 
 <p align="center">
-  <img src="assets/fig03_corexy_cad.png" width="900" alt="CoreXY CAD"><br>
+  <img src="assets/fig03_corexy_cad.png" width="600" alt="CoreXY CAD"><br>
   <sub><b>Fig 03 — CoreXY CAD.</b> Symmetric belt routing with idlers; X-rail on 8 mm rods.</sub>
 </p>
 
