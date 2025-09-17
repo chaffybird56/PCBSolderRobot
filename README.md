@@ -115,7 +115,7 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 </p>
 
 <p align="center">
-  <img src="assets/fig12_confusion.png" width="750" alt="Confusion matrix"><br>
+  <img src="assets/fig12_confusion.png" width="450" alt="Confusion matrix"><br>
   <sub><b>Fig 12.</b> Clear separation for <i>Missing</i> vs <i>Bad</i>.</sub>
 </p>
 
