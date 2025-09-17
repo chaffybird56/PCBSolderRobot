@@ -29,7 +29,7 @@ Rigid V-slot frame; **12 mm Y-rods** for stiffness, **8 mm X-rods** to reduce mo
 <table>
   <tr>
     <td align="center" valign="top" width="50%">
-      <img src="assets/fig02_toolhead_cad.png" width="360" alt="Toolhead CAD"><br>
+      <img src="assets/fig02_toolhead_cad.png" width="390" alt="Toolhead CAD"><br>
       <sub><b>Toolhead CAD.</b> Iron + geared feed align wire right at the pad; compact, low-mass carriage.</sub>
     </td>
     <td align="center" valign="top" width="50%">
@@ -43,7 +43,7 @@ Rigid V-slot frame; **12 mm Y-rods** for stiffness, **8 mm X-rods** to reduce mo
 <table>
   <tr>
     <td align="center" valign="top" width="50%">
-      <img src="assets/fig05_enclosure.png" width="360" alt="Electronics enclosure"><br>
+      <img src="assets/fig05_enclosure.png" width="390" alt="Electronics enclosure"><br>
       <sub><b>Electronics enclosure.</b> Houses PSU, control PCB, and thermal/EMI shielding for stable operation.</sub>
     </td>
     <td align="center" valign="top" width="50%">
@@ -101,11 +101,11 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="assets/fig11_curves.png" width="320" alt="Training curves"><br>
+      <img src="assets/fig11_curves.png" width="360" alt="Training curves"><br>
       <sub><b>Fig 11.</b> Loss/accuracy through training (early stopping around convergence).</sub>
     </td>
     <td align="center" width="50%">
-      <img src="assets/fig12_confusion.png" width="320" alt="Confusion matrix"><br>
+      <img src="assets/fig12_confusion.png" width="360" alt="Confusion matrix"><br>
       <sub><b>Fig 12.</b> Confusion matrix after validation; clear separation for <i>Missing</i> vs <i>Bad</i>.</sub>
     </td>
   </tr>
