@@ -110,12 +110,12 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 
 <!-- Training plots (stacked for readability) -->
 <p align="center">
-  <img src="assets/fig11_curves.png" width="1000" alt="Training curves"><br>
+  <img src="assets/fig11_curves.png" width="800" alt="Training curves"><br>
   <sub><b>Fig 11.</b> Loss/accuracy vs. epochs; early stopping at convergence.</sub>
 </p>
 
 <p align="center">
-  <img src="assets/fig12_confusion.png" width="1000" alt="Confusion matrix"><br>
+  <img src="assets/fig12_confusion.png" width="750" alt="Confusion matrix"><br>
   <sub><b>Fig 12.</b> Clear separation for <i>Missing</i> vs <i>Bad</i>.</sub>
 </p>
 
@@ -126,7 +126,7 @@ Lighting-controlled captures (Pi HQ + microscope lens + LED ring) → histogram 
 Tkinter GUI accepts **camera / image / video** inputs, renders detections with class/confidence, shows FPS, and writes **CSV logs**. Interface is structured to publish UART messages to the Pico for **closed-loop re-solder** in the next revision.
 
 <p align="center">
-  <img src="assets/fig13_multi_boards.png" width="700" alt="Batch assessment across multiple boards"><br>
+  <img src="assets/fig13_multi_boards.png" width="600" alt="Batch assessment across multiple boards"><br>
   <sub><b>Fig 13.</b> Batch assessment: per-joint labels & confidences across multiple boards; all decisions logged to CSV for QA and future closed-loop re-solder.</sub>
 </p>
 
