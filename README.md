@@ -147,7 +147,7 @@ Tkinter GUI accepts **camera / image / video** inputs, renders detections with c
 ---
 
 ## 🤝 Team
-Arji Thaiyib, Arjun Bhatia, **Ahmad Choudhry**, Abdullah Hafeez, Mayar Aljayoush  
+Arji Thaiyib, Arjun Bhatia, **Ahmad Ali**, Abdullah Hafeez, Mayar Aljayoush  
 Supervisors: Dr. S. Shirani, Dr. C. Chen
 
 ## License
