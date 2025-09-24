@@ -9,10 +9,10 @@ https://github.com/user-attachments/assets/3e60dc63-2b64-4922-9cd8-233fcee57446
 ---
 
 ## ✨ Highlights
-- **Mechanical:** Belt-driven **Core XY** stage with **leadscrew Z-axis** and a **stepper-gun solder dispenser** for precise wire feed and tip placement.
+- **Mechanical:** Belt-driven **Core XY** stage with **leadscrew Z-axis** and a stepper-gun solder dispenser for precise wire feed and tip placement.
 - **Electronics:** Custom **Altium** PCB integrating **TMC2209** motor drivers, endstops/limit sensors, and a **5 V buck** for regulated logic rails.
 - **Firmware:** C++/PlatformIO with **UART** telemetry for current limiting, microstepping and diagnostics; motion planner with **dynamic error handling** and soft-limits.
-- **Vision:** **Raspberry Pi** + HQ camera under controlled **LED ring** lighting; manual **bounding-box labeling** of solder joints and dataset augmentation for robustness.
+- **Vision:** **Raspberry Pi** + HQ camera under controlled LED ring lighting; manual **bounding-box labeling** of solder joints and dataset augmentation for robustness.
 - **Machine Learning:** Morphological pre-processing + **MobileNetV2** (TFLite) for real-time **Good / Bad / Missing** joint classification.
 - **App:** Tkinter GUI with live video/image inputs, overlays, per-joint confidences, and CSV logging for on-the-fly assessment and future **auto re-solder**.
 
