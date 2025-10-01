@@ -40,7 +40,7 @@ Rigid V-slot frame; **12 mm Y-rods** for stiffness, **8 mm X-rods** to reduce mo
   <img src="assets/fig03_corexy_cad.png" width="500" alt="CoreXY CAD"><br>
   <sub><b>Fig 03 — CoreXY CAD.</b> Symmetric belt routing with idlers; X-rail on 8 mm rods.</sub>
 </p>
-
+<p align="center"> <img width="500" height="500" alt="SCR-20251001-ltdi" src="https://github.com/user-attachments/assets/f7900d04-f8bc-476e-926e-338a8c247974" /></p>
 
 
 ### Additional fixtures
