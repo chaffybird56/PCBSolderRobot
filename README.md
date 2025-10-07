@@ -60,7 +60,7 @@ Rigid V-slot frame; **12 mm Y-rods** for stiffness, **8 mm X-rods** to reduce mo
 
 
 ### Electronics (motion, power, solder feed)
-Custom controller: **Raspberry Pi Pico + TMC2209** drivers on a single board; **24 V** motion rail with **5 V** buck for logic. UART access to driver current, microstepping, and diagnostics enables safe current limits and smooth feeds.
+Custom controller: **Raspberry Pi Pico + TMC2209** drivers on a single board; **24 Volt** motion rail with **5 Volt** buck for logic. UART access to driver current, microstepping, and diagnostics enables safe current limits and smooth feeds.
 
 <p align="center"><img src="assets/fig08_electronics_pcb.png" width="640" alt="Motion/regulation/feeder PCB"></p>
 
